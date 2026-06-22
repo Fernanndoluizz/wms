@@ -2,7 +2,9 @@ package com.luiz.wms.service;
 
 import com.luiz.wms.entity.Produto;
 import com.luiz.wms.repository.ProdutoRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -23,4 +25,13 @@ public class ProdutoService {
         return produtoRepository.save(produto);
     }
 
+    public Produto buscarPorId(Long id) {
+        return produtoRepository.findById(id)
+                .orElseThrow(() ->
+                        new ResponseStatusException(
+                                HttpStatus.NOT_FOUND,
+                                "Produto não encontrado"
+                        )
+                );
+    }
 }

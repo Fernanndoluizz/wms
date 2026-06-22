@@ -27,4 +27,9 @@ public class ProdutoController {
 
     }
 
+    @GetMapping("/{id}")
+    public Produto buscarPorId(@PathVariable Long id) {
+        return produtoService.buscarPorId(id);
+    }
+
 }
