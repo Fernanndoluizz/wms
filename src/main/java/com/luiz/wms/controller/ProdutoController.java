@@ -32,4 +32,11 @@ public class ProdutoController {
         return produtoService.buscarPorId(id);
     }
 
+    @PutMapping("/{id}")
+    public Produto atualizarProduto(@PathVariable Long id, @RequestBody Produto produto) {
+        return produtoService.atualizarProduto(id, produto);
+    }
+
+    
+
 }
