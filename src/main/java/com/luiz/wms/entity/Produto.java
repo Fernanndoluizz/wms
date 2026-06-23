@@ -1,6 +1,9 @@
 package com.luiz.wms.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 
 @Entity
 @Table(name = "produtos")
@@ -10,14 +13,18 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     private String sku;
 
+    @NotBlank
     private String nome;
 
     private String descricao;
 
+    @Positive
     private Double peso;
 
+    @PositiveOrZero
     private Integer quantidade;
 
     public Long getId() {

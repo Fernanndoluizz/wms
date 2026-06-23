@@ -2,6 +2,7 @@ package com.luiz.wms.controller;
 
 import com.luiz.wms.entity.Produto;
 import com.luiz.wms.service.ProdutoService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public Produto cadastrarProduto(@RequestBody Produto produto){
+    public Produto cadastrarProduto(@Valid @RequestBody Produto produto){
         return produtoService.cadastrarProduto(produto);
 
     }
@@ -33,10 +34,9 @@ public class ProdutoController {
     }
 
     @PutMapping("/{id}")
-    public Produto atualizarProduto(@PathVariable Long id, @RequestBody Produto produto) {
+    public Produto atualizarProduto(@PathVariable Long id,@Valid @RequestBody Produto produto) {
         return produtoService.atualizarProduto(id, produto);
     }
 
-    
 
 }
